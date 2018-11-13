@@ -1,11 +1,7 @@
 
 *** Settings ***
 Library           BuiltIn
-Library           SudsLibrary
-Library           Collections
 Library           OperatingSystem
-Library           Selenium2Library
-Library           requests
 Library           RequestsLibrary
 
 
