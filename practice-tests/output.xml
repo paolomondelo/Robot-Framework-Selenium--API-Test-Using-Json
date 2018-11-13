@@ -1,0 +1,707 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<robot generated="20181113 20:34:56.115" generator="Robot 3.0.4 (Python 2.7.12 on win32)">
+<suite source="C:\Users\pmondel\Documents\Smoke Test\practice-tests\poc_api_test.robot" id="s1" name="Poc Api Test">
+<kw type="setup" name="Precondition">
+<kw name="Log To Console" library="BuiltIn">
+<doc>Logs the given message to the console.</doc>
+<arguments>
+<arg>Start of testing</arg>
+</arguments>
+<status status="PASS" endtime="20181113 20:34:56.733" starttime="20181113 20:34:56.733"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:34:56.733" starttime="20181113 20:34:56.732"></status>
+</kw>
+<test id="s1-t1" name="Validate Name should contain 'Carbon Credits'">
+<kw name="Given I Invoke get api endpoint">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>google</arg>
+<arg>${endpoint}</arg>
+</arguments>
+<msg timestamp="20181113 20:34:56.737" level="INFO">Creating Session using : alias=google, url=https://api.tmsandbox.co.nz/v1/Categories/6327/Details.json?catalogue=false, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg timestamp="20181113 20:34:56.737" level="DEBUG">Creating session: google</msg>
+<msg timestamp="20181113 20:34:56.737" level="DEBUG">Argument types are:
+&lt;type 'int'&gt;</msg>
+<status status="PASS" endtime="20181113 20:34:56.738" starttime="20181113 20:34:56.736"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20181113 20:34:56.739" level="INFO">${resp} = </msg>
+<status status="PASS" endtime="20181113 20:34:56.739" starttime="20181113 20:34:56.738"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>google</arg>
+<arg>/</arg>
+<arg>allow_redirects=${true}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20181113 20:34:56.750" level="INFO">Starting new HTTPS connection (1): api.tmsandbox.co.nz</msg>
+<msg timestamp="20181113 20:35:01.422" level="DEBUG">"GET /v1/Categories/6327/Details.json?catalogue=false/ HTTP/1.1" 200 828</msg>
+<msg timestamp="20181113 20:35:01.423" level="INFO">Get Request using : alias=google, uri=/, headers=None </msg>
+<msg timestamp="20181113 20:35:01.423" level="INFO">C:\Tools\Python27\lib\site-packages\requests\packages\urllib3\connectionpool.py:821: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.org/en/latest/security.html
+  InsecureRequestWarning)</msg>
+<msg timestamp="20181113 20:35:01.425" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20181113 20:35:01.425" starttime="20181113 20:34:56.739"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:01.426" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20181113 20:35:01.427" starttime="20181113 20:35:01.426"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+</arguments>
+<assign>
+<var>${statuscode}</var>
+</assign>
+<msg timestamp="20181113 20:35:01.428" level="INFO">200</msg>
+<msg timestamp="20181113 20:35:01.428" level="INFO">${statuscode} = None</msg>
+<status status="PASS" endtime="20181113 20:35:01.428" starttime="20181113 20:35:01.427"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.headers}</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20181113 20:35:01.430" level="INFO">{'Content-Length': '828', 'Content-Encoding': 'gzip', 'Accept-Ranges': 'bytes', 'Access-Control-Expose-Headers': 'ETag', 'Vary': 'Accept-Encoding', 'Connection': 'Keep-Alive', 'X-UA-Compatible': 'IE=Edge', 'Date': 'Tue, 13 Nov 2018 12:35:01 GMT', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json', 'Age': '24266'}</msg>
+<msg timestamp="20181113 20:35:01.430" level="INFO">${headers} = None</msg>
+<status status="PASS" endtime="20181113 20:35:01.430" starttime="20181113 20:35:01.429"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+</arguments>
+<assign>
+<var>${responsemessage}</var>
+</assign>
+<msg timestamp="20181113 20:35:01.431" level="INFO">{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}</msg>
+<msg timestamp="20181113 20:35:01.432" level="INFO">${responsemessage} = None</msg>
+<status status="PASS" endtime="20181113 20:35:01.432" starttime="20181113 20:35:01.431"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${resp.json()}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20181113 20:35:01.434" level="INFO">${json} = {u'CanListClassifieds': True, u'Promotions': [{u'Description': u'Lowest position in category', u'Price': 0.0, u'MinimumPhotoCount': 0, u'Id': 1, u'Name': u'Basic'}, {u'MinimumPhotoCount': 0, u'Descrip...</msg>
+<status status="PASS" endtime="20181113 20:35:01.434" starttime="20181113 20:35:01.433"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:01.435" starttime="20181113 20:34:56.736"></status>
+</kw>
+<kw name="And I Check the Response Header">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.headers}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:01.438" level="INFO">{'Content-Length': '828', 'Content-Encoding': 'gzip', 'Accept-Ranges': 'bytes', 'Access-Control-Expose-Headers': 'ETag', 'Vary': 'Accept-Encoding', 'Connection': 'Keep-Alive', 'X-UA-Compatible': 'IE=Edge', 'Date': 'Tue, 13 Nov 2018 12:35:01 GMT', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json', 'Age': '24266'}</msg>
+<status status="PASS" endtime="20181113 20:35:01.438" starttime="20181113 20:35:01.437"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:01.439" starttime="20181113 20:35:01.436"></status>
+</kw>
+<kw name="And I Check the Response Message">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:01.442" level="INFO">{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}</msg>
+<status status="PASS" endtime="20181113 20:35:01.442" starttime="20181113 20:35:01.441"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:01.442" starttime="20181113 20:35:01.440"></status>
+</kw>
+<kw name="And I Check the Response Code">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:01.444" level="INFO">200</msg>
+<status status="PASS" endtime="20181113 20:35:01.444" starttime="20181113 20:35:01.444"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:01.445" starttime="20181113 20:35:01.443"></status>
+</kw>
+<kw name="And I Convert json to string">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${resp.json()}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20181113 20:35:01.447" level="INFO">${json} = {u'CanListClassifieds': True, u'Promotions': [{u'Description': u'Lowest position in category', u'Price': 0.0, u'MinimumPhotoCount': 0, u'Id': 1, u'Name': u'Basic'}, {u'MinimumPhotoCount': 0, u'Descrip...</msg>
+<status status="PASS" endtime="20181113 20:35:01.448" starttime="20181113 20:35:01.447"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.headers}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:01.448" level="INFO">{'Content-Length': '828', 'Content-Encoding': 'gzip', 'Accept-Ranges': 'bytes', 'Access-Control-Expose-Headers': 'ETag', 'Vary': 'Accept-Encoding', 'Connection': 'Keep-Alive', 'X-UA-Compatible': 'IE=Edge', 'Date': 'Tue, 13 Nov 2018 12:35:01 GMT', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json', 'Age': '24266'}</msg>
+<status status="PASS" endtime="20181113 20:35:01.448" starttime="20181113 20:35:01.448"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:01.449" level="INFO">{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}</msg>
+<status status="PASS" endtime="20181113 20:35:01.449" starttime="20181113 20:35:01.449"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+</arguments>
+<assign>
+<var>${body123}</var>
+</assign>
+<msg timestamp="20181113 20:35:01.450" level="INFO">${body123} = {"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\...</msg>
+<status status="PASS" endtime="20181113 20:35:01.450" starttime="20181113 20:35:01.449"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${body123}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:01.451" level="INFO">{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}</msg>
+<status status="PASS" endtime="20181113 20:35:01.451" starttime="20181113 20:35:01.451"></status>
+</kw>
+<kw name="Create File" library="OperatingSystem">
+<doc>Creates a file with the given content and encoding.</doc>
+<arguments>
+<arg>${EXECDIR}\\resources\\service_data\\test_data\\txt\\bodycontent.json</arg>
+<arg>${body123}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:01.453" html="yes" level="INFO">Created file '&lt;a href="file://C:\Users\pmondel\Documents\Smoke Test\practice-tests\resources\service_data\test_data\txt\bodycontent.json"&gt;C:\Users\pmondel\Documents\Smoke Test\practice-tests\resources\service_data\test_data\txt\bodycontent.json&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20181113 20:35:01.453" starttime="20181113 20:35:01.451"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:01.454" starttime="20181113 20:35:01.446"></status>
+</kw>
+<kw name="Then I Validate that it throws the correct status code(HTTP 200)">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20181113 20:35:01.456" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20181113 20:35:01.456" starttime="20181113 20:35:01.455"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:01.456" starttime="20181113 20:35:01.455"></status>
+</kw>
+<kw name="And I Verify that the result contains &quot;Name&quot;:&quot;Carbon credits&quot;">
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+<arg>${expectedscenario1}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:01.458" level="FAIL">'{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}' does not contain '"Name":"Carbon credits1"'</msg>
+<msg timestamp="20181113 20:35:01.458" level="DEBUG">Traceback (most recent call last):
+  None</msg>
+<status status="FAIL" endtime="20181113 20:35:01.458" starttime="20181113 20:35:01.457"></status>
+</kw>
+<status status="FAIL" endtime="20181113 20:35:01.459" starttime="20181113 20:35:01.457"></status>
+</kw>
+<status status="FAIL" endtime="20181113 20:35:01.459" critical="yes" starttime="20181113 20:34:56.734">'{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}' does not contain '"Name":"Carbon credits1"'</status>
+</test>
+<test id="s1-t2" name="Validate that CanRelist should be tagged as true">
+<kw name="Given I Invoke get api endpoint">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>google</arg>
+<arg>${endpoint}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:01.466" level="INFO">Creating Session using : alias=google, url=https://api.tmsandbox.co.nz/v1/Categories/6327/Details.json?catalogue=false, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg timestamp="20181113 20:35:01.468" level="DEBUG">Creating session: google</msg>
+<msg timestamp="20181113 20:35:01.469" level="DEBUG">Argument types are:
+&lt;type 'int'&gt;</msg>
+<status status="PASS" endtime="20181113 20:35:01.469" starttime="20181113 20:35:01.465"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20181113 20:35:01.470" level="INFO">${resp} = </msg>
+<status status="PASS" endtime="20181113 20:35:01.470" starttime="20181113 20:35:01.469"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>google</arg>
+<arg>/</arg>
+<arg>allow_redirects=${true}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20181113 20:35:01.471" level="INFO">Starting new HTTPS connection (1): api.tmsandbox.co.nz</msg>
+<msg timestamp="20181113 20:35:02.578" level="DEBUG">"GET /v1/Categories/6327/Details.json?catalogue=false/ HTTP/1.1" 200 828</msg>
+<msg timestamp="20181113 20:35:02.579" level="INFO">Get Request using : alias=google, uri=/, headers=None </msg>
+<msg timestamp="20181113 20:35:02.579" level="INFO">C:\Tools\Python27\lib\site-packages\requests\packages\urllib3\connectionpool.py:821: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.org/en/latest/security.html
+  InsecureRequestWarning)</msg>
+<msg timestamp="20181113 20:35:02.581" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20181113 20:35:02.581" starttime="20181113 20:35:01.470"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:02.582" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20181113 20:35:02.582" starttime="20181113 20:35:02.581"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+</arguments>
+<assign>
+<var>${statuscode}</var>
+</assign>
+<msg timestamp="20181113 20:35:02.584" level="INFO">200</msg>
+<msg timestamp="20181113 20:35:02.584" level="INFO">${statuscode} = None</msg>
+<status status="PASS" endtime="20181113 20:35:02.584" starttime="20181113 20:35:02.583"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.headers}</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20181113 20:35:02.585" level="INFO">{'Content-Length': '828', 'Content-Encoding': 'gzip', 'Accept-Ranges': 'bytes', 'Access-Control-Expose-Headers': 'ETag', 'Vary': 'Accept-Encoding', 'Connection': 'Keep-Alive', 'X-UA-Compatible': 'IE=Edge', 'Date': 'Tue, 13 Nov 2018 12:35:02 GMT', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json', 'Age': '24267'}</msg>
+<msg timestamp="20181113 20:35:02.586" level="INFO">${headers} = None</msg>
+<status status="PASS" endtime="20181113 20:35:02.586" starttime="20181113 20:35:02.585"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+</arguments>
+<assign>
+<var>${responsemessage}</var>
+</assign>
+<msg timestamp="20181113 20:35:02.587" level="INFO">{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}</msg>
+<msg timestamp="20181113 20:35:02.587" level="INFO">${responsemessage} = None</msg>
+<status status="PASS" endtime="20181113 20:35:02.588" starttime="20181113 20:35:02.586"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${resp.json()}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20181113 20:35:02.589" level="INFO">${json} = {u'CanListClassifieds': True, u'Promotions': [{u'Description': u'Lowest position in category', u'Price': 0.0, u'MinimumPhotoCount': 0, u'Id': 1, u'Name': u'Basic'}, {u'MinimumPhotoCount': 0, u'Descrip...</msg>
+<status status="PASS" endtime="20181113 20:35:02.589" starttime="20181113 20:35:02.588"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:02.590" starttime="20181113 20:35:01.465"></status>
+</kw>
+<kw name="And I Check the Response Header">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.headers}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:02.594" level="INFO">{'Content-Length': '828', 'Content-Encoding': 'gzip', 'Accept-Ranges': 'bytes', 'Access-Control-Expose-Headers': 'ETag', 'Vary': 'Accept-Encoding', 'Connection': 'Keep-Alive', 'X-UA-Compatible': 'IE=Edge', 'Date': 'Tue, 13 Nov 2018 12:35:02 GMT', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json', 'Age': '24267'}</msg>
+<status status="PASS" endtime="20181113 20:35:02.594" starttime="20181113 20:35:02.593"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:02.594" starttime="20181113 20:35:02.592"></status>
+</kw>
+<kw name="And I Check the Response Message">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:02.598" level="INFO">{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}</msg>
+<status status="PASS" endtime="20181113 20:35:02.598" starttime="20181113 20:35:02.597"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:02.599" starttime="20181113 20:35:02.596"></status>
+</kw>
+<kw name="And I Check the Response Code">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:02.605" level="INFO">200</msg>
+<status status="PASS" endtime="20181113 20:35:02.605" starttime="20181113 20:35:02.604"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:02.606" starttime="20181113 20:35:02.603"></status>
+</kw>
+<kw name="And I Convert json to string">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${resp.json()}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20181113 20:35:02.612" level="INFO">${json} = {u'CanListClassifieds': True, u'Promotions': [{u'Description': u'Lowest position in category', u'Price': 0.0, u'MinimumPhotoCount': 0, u'Id': 1, u'Name': u'Basic'}, {u'MinimumPhotoCount': 0, u'Descrip...</msg>
+<status status="PASS" endtime="20181113 20:35:02.612" starttime="20181113 20:35:02.611"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.headers}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:02.613" level="INFO">{'Content-Length': '828', 'Content-Encoding': 'gzip', 'Accept-Ranges': 'bytes', 'Access-Control-Expose-Headers': 'ETag', 'Vary': 'Accept-Encoding', 'Connection': 'Keep-Alive', 'X-UA-Compatible': 'IE=Edge', 'Date': 'Tue, 13 Nov 2018 12:35:02 GMT', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json', 'Age': '24267'}</msg>
+<status status="PASS" endtime="20181113 20:35:02.613" starttime="20181113 20:35:02.612"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:02.613" level="INFO">{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}</msg>
+<status status="PASS" endtime="20181113 20:35:02.614" starttime="20181113 20:35:02.613"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+</arguments>
+<assign>
+<var>${body123}</var>
+</assign>
+<msg timestamp="20181113 20:35:02.614" level="INFO">${body123} = {"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\...</msg>
+<status status="PASS" endtime="20181113 20:35:02.614" starttime="20181113 20:35:02.614"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${body123}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:02.614" level="INFO">{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}</msg>
+<status status="PASS" endtime="20181113 20:35:02.615" starttime="20181113 20:35:02.614"></status>
+</kw>
+<kw name="Create File" library="OperatingSystem">
+<doc>Creates a file with the given content and encoding.</doc>
+<arguments>
+<arg>${EXECDIR}\\resources\\service_data\\test_data\\txt\\bodycontent.json</arg>
+<arg>${body123}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:02.617" html="yes" level="INFO">Created file '&lt;a href="file://C:\Users\pmondel\Documents\Smoke Test\practice-tests\resources\service_data\test_data\txt\bodycontent.json"&gt;C:\Users\pmondel\Documents\Smoke Test\practice-tests\resources\service_data\test_data\txt\bodycontent.json&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20181113 20:35:02.618" starttime="20181113 20:35:02.615"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:02.618" starttime="20181113 20:35:02.611"></status>
+</kw>
+<kw name="Then I Validate that it throws the correct status code(HTTP 200)">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20181113 20:35:02.620" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20181113 20:35:02.620" starttime="20181113 20:35:02.619"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:02.620" starttime="20181113 20:35:02.619"></status>
+</kw>
+<kw name="And I Verify that the result contains &quot;CanRelist&quot;:true">
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+<arg>${expectedscenario2}</arg>
+</arguments>
+<status status="PASS" endtime="20181113 20:35:02.621" starttime="20181113 20:35:02.621"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:02.621" starttime="20181113 20:35:02.620"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:02.622" critical="yes" starttime="20181113 20:35:01.462"></status>
+</test>
+<test id="s1-t3" name="Validate that the Promotions element with Name = &quot;Gallery&quot; has a Description that contains the text &quot;2x larger image&quot;">
+<kw name="Given I Invoke get api endpoint">
+<kw name="Create Session" library="RequestsLibrary">
+<doc>Create Session: create a HTTP session to a server</doc>
+<arguments>
+<arg>google</arg>
+<arg>${endpoint}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:02.625" level="INFO">Creating Session using : alias=google, url=https://api.tmsandbox.co.nz/v1/Categories/6327/Details.json?catalogue=false, headers={},                     cookies=None, auth=None, timeout=None, proxies=None, verify=False,                     debug=0 </msg>
+<msg timestamp="20181113 20:35:02.625" level="DEBUG">Creating session: google</msg>
+<msg timestamp="20181113 20:35:02.625" level="DEBUG">Argument types are:
+&lt;type 'int'&gt;</msg>
+<status status="PASS" endtime="20181113 20:35:02.626" starttime="20181113 20:35:02.625"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20181113 20:35:02.626" level="INFO">${resp} = </msg>
+<status status="PASS" endtime="20181113 20:35:02.626" starttime="20181113 20:35:02.626"></status>
+</kw>
+<kw name="Get Request" library="RequestsLibrary">
+<doc>Send a GET request on the session object found using the</doc>
+<arguments>
+<arg>google</arg>
+<arg>/</arg>
+<arg>allow_redirects=${true}</arg>
+</arguments>
+<assign>
+<var>${resp}</var>
+</assign>
+<msg timestamp="20181113 20:35:02.627" level="INFO">Starting new HTTPS connection (1): api.tmsandbox.co.nz</msg>
+<msg timestamp="20181113 20:35:03.752" level="DEBUG">"GET /v1/Categories/6327/Details.json?catalogue=false/ HTTP/1.1" 200 828</msg>
+<msg timestamp="20181113 20:35:03.754" level="INFO">Get Request using : alias=google, uri=/, headers=None </msg>
+<msg timestamp="20181113 20:35:03.754" level="INFO">C:\Tools\Python27\lib\site-packages\requests\packages\urllib3\connectionpool.py:821: InsecureRequestWarning: Unverified HTTPS request is being made. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.org/en/latest/security.html
+  InsecureRequestWarning)</msg>
+<msg timestamp="20181113 20:35:03.756" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20181113 20:35:03.756" starttime="20181113 20:35:02.626"></status>
+</kw>
+<kw name="Set Suite Variable" library="BuiltIn">
+<doc>Makes a variable available everywhere within the scope of the current suite.</doc>
+<arguments>
+<arg>${resp}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:03.757" level="INFO">${resp} = &lt;Response [200]&gt;</msg>
+<status status="PASS" endtime="20181113 20:35:03.757" starttime="20181113 20:35:03.756"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+</arguments>
+<assign>
+<var>${statuscode}</var>
+</assign>
+<msg timestamp="20181113 20:35:03.759" level="INFO">200</msg>
+<msg timestamp="20181113 20:35:03.759" level="INFO">${statuscode} = None</msg>
+<status status="PASS" endtime="20181113 20:35:03.759" starttime="20181113 20:35:03.758"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.headers}</arg>
+</arguments>
+<assign>
+<var>${headers}</var>
+</assign>
+<msg timestamp="20181113 20:35:03.761" level="INFO">{'Content-Length': '828', 'Content-Encoding': 'gzip', 'Accept-Ranges': 'bytes', 'Access-Control-Expose-Headers': 'ETag', 'Vary': 'Accept-Encoding', 'Connection': 'Keep-Alive', 'X-UA-Compatible': 'IE=Edge', 'Date': 'Tue, 13 Nov 2018 12:35:03 GMT', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json', 'Age': '24268'}</msg>
+<msg timestamp="20181113 20:35:03.761" level="INFO">${headers} = None</msg>
+<status status="PASS" endtime="20181113 20:35:03.761" starttime="20181113 20:35:03.760"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+</arguments>
+<assign>
+<var>${responsemessage}</var>
+</assign>
+<msg timestamp="20181113 20:35:03.763" level="INFO">{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}</msg>
+<msg timestamp="20181113 20:35:03.763" level="INFO">${responsemessage} = None</msg>
+<status status="PASS" endtime="20181113 20:35:03.763" starttime="20181113 20:35:03.762"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${resp.json()}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20181113 20:35:03.765" level="INFO">${json} = {u'CanListClassifieds': True, u'Promotions': [{u'Description': u'Lowest position in category', u'Price': 0.0, u'MinimumPhotoCount': 0, u'Id': 1, u'Name': u'Basic'}, {u'MinimumPhotoCount': 0, u'Descrip...</msg>
+<status status="PASS" endtime="20181113 20:35:03.765" starttime="20181113 20:35:03.764"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:03.766" starttime="20181113 20:35:02.625"></status>
+</kw>
+<kw name="And I Check the Response Header">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.headers}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:03.769" level="INFO">{'Content-Length': '828', 'Content-Encoding': 'gzip', 'Accept-Ranges': 'bytes', 'Access-Control-Expose-Headers': 'ETag', 'Vary': 'Accept-Encoding', 'Connection': 'Keep-Alive', 'X-UA-Compatible': 'IE=Edge', 'Date': 'Tue, 13 Nov 2018 12:35:03 GMT', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json', 'Age': '24268'}</msg>
+<status status="PASS" endtime="20181113 20:35:03.769" starttime="20181113 20:35:03.768"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:03.769" starttime="20181113 20:35:03.767"></status>
+</kw>
+<kw name="And I Check the Response Message">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:03.772" level="INFO">{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}</msg>
+<status status="PASS" endtime="20181113 20:35:03.772" starttime="20181113 20:35:03.771"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:03.773" starttime="20181113 20:35:03.770"></status>
+</kw>
+<kw name="And I Check the Response Code">
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:03.776" level="INFO">200</msg>
+<status status="PASS" endtime="20181113 20:35:03.776" starttime="20181113 20:35:03.775"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:03.777" starttime="20181113 20:35:03.775"></status>
+</kw>
+<kw name="And I Convert json to string">
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${resp.json()}</arg>
+</arguments>
+<assign>
+<var>${json}</var>
+</assign>
+<msg timestamp="20181113 20:35:03.781" level="INFO">${json} = {u'CanListClassifieds': True, u'Promotions': [{u'Description': u'Lowest position in category', u'Price': 0.0, u'MinimumPhotoCount': 0, u'Id': 1, u'Name': u'Basic'}, {u'MinimumPhotoCount': 0, u'Descrip...</msg>
+<status status="PASS" endtime="20181113 20:35:03.781" starttime="20181113 20:35:03.780"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.headers}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:03.782" level="INFO">{'Content-Length': '828', 'Content-Encoding': 'gzip', 'Accept-Ranges': 'bytes', 'Access-Control-Expose-Headers': 'ETag', 'Vary': 'Accept-Encoding', 'Connection': 'Keep-Alive', 'X-UA-Compatible': 'IE=Edge', 'Date': 'Tue, 13 Nov 2018 12:35:03 GMT', 'Access-Control-Allow-Origin': '*', 'Content-Type': 'application/json', 'Age': '24268'}</msg>
+<status status="PASS" endtime="20181113 20:35:03.782" starttime="20181113 20:35:03.781"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:03.783" level="INFO">{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}</msg>
+<status status="PASS" endtime="20181113 20:35:03.783" starttime="20181113 20:35:03.782"></status>
+</kw>
+<kw name="Set Variable" library="BuiltIn">
+<doc>Returns the given values which can then be assigned to a variables.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+</arguments>
+<assign>
+<var>${body123}</var>
+</assign>
+<msg timestamp="20181113 20:35:03.784" level="INFO">${body123} = {"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\...</msg>
+<status status="PASS" endtime="20181113 20:35:03.784" starttime="20181113 20:35:03.783"></status>
+</kw>
+<kw name="Log" library="BuiltIn">
+<doc>Logs the given message with the given level.</doc>
+<arguments>
+<arg>${body123}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:03.784" level="INFO">{"CategoryId":6327,"Name":"Carbon credits","Path":"\/Business-farming-industry\/Carbon-credits","CanListAuctions":true,"CanListClassifieds":true,"CanRelist":true,"LegalNotice":"Compliance Declaration\u000aI confirm that these carbon credits are certified and registered with a carbon credits registry. ","DefaultDuration":14,"AllowedDurations":[2,3,4,5,6,7,10,14],"Fees":{"Bundle":15.0000,"EndDate":0.2500,"Feature":10.0000,"Gallery":2.0000,"Listing":29.0000,"Reserve":0.2500,"Subtitle":0.5500,"TenDays":0.2500,"ListingFeeTiers":[{"MinimumTierPrice":0,"FixedFee":29.00}],"SecondCategory":0.9900},"FreePhotoCount":20,"MaximumPhotoCount":20,"IsFreeToRelist":true,"Promotions":[{"Id":1,"Name":"Basic","Description":"Lowest position in category","Price":0.0000,"MinimumPhotoCount":0},{"Id":2,"Name":"Gallery","Description":"Good position in category \u000a2x larger image in desktop site search results","Price":2.0000,"OriginalPrice":2.0000,"MinimumPhotoCount":0},{"Id":3,"Name":"Feature","Description":"Better position in category \u000a4x larger image in desktop site search results","Price":10.0000,"OriginalPrice":10.0000,"Recommended":true,"MinimumPhotoCount":0},{"Id":4,"Name":"Feature Combo","Description":"Best position in category \u000aIncludes benefits of Feature \u000aHighlights listing in search results","Price":15.0000,"OriginalPrice":15.0000,"MinimumPhotoCount":0}],"EmbeddedContentOptions":[],"MaximumTitleLength":80,"AreaOfBusiness":1,"DefaultRelistDuration":7}</msg>
+<status status="PASS" endtime="20181113 20:35:03.784" starttime="20181113 20:35:03.784"></status>
+</kw>
+<kw name="Create File" library="OperatingSystem">
+<doc>Creates a file with the given content and encoding.</doc>
+<arguments>
+<arg>${EXECDIR}\\resources\\service_data\\test_data\\txt\\bodycontent.json</arg>
+<arg>${body123}</arg>
+</arguments>
+<msg timestamp="20181113 20:35:03.786" html="yes" level="INFO">Created file '&lt;a href="file://C:\Users\pmondel\Documents\Smoke Test\practice-tests\resources\service_data\test_data\txt\bodycontent.json"&gt;C:\Users\pmondel\Documents\Smoke Test\practice-tests\resources\service_data\test_data\txt\bodycontent.json&lt;/a&gt;'.</msg>
+<status status="PASS" endtime="20181113 20:35:03.786" starttime="20181113 20:35:03.785"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:03.787" starttime="20181113 20:35:03.779"></status>
+</kw>
+<kw name="Then I Validate that it throws the correct status code(HTTP 200)">
+<kw name="Should Be Equal As Strings" library="BuiltIn">
+<doc>Fails if objects are unequal after converting them to strings.</doc>
+<arguments>
+<arg>${resp.status_code}</arg>
+<arg>200</arg>
+</arguments>
+<msg timestamp="20181113 20:35:03.790" level="INFO">Argument types are:
+&lt;type 'int'&gt;
+&lt;type 'unicode'&gt;</msg>
+<status status="PASS" endtime="20181113 20:35:03.790" starttime="20181113 20:35:03.789"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:03.790" starttime="20181113 20:35:03.789"></status>
+</kw>
+<kw name="And I Verify that the result contains Promotions">
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+<arg>${expectedscenario3}</arg>
+</arguments>
+<status status="PASS" endtime="20181113 20:35:03.792" starttime="20181113 20:35:03.791"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:03.792" starttime="20181113 20:35:03.791"></status>
+</kw>
+<kw name="And I Verify that the result contains &quot;Name&quot;:&quot;Gallery&quot;">
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+<arg>${expectedscenario4}</arg>
+</arguments>
+<status status="PASS" endtime="20181113 20:35:03.794" starttime="20181113 20:35:03.793"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:03.794" starttime="20181113 20:35:03.793"></status>
+</kw>
+<kw name="And I Verify that the result contains 2x larger image in desktop site search results">
+<kw name="Should Contain" library="BuiltIn">
+<doc>Fails if ``container`` does not contain ``item`` one or more times.</doc>
+<arguments>
+<arg>${resp.content}</arg>
+<arg>${expectedscenario5}</arg>
+</arguments>
+<status status="PASS" endtime="20181113 20:35:03.796" starttime="20181113 20:35:03.795"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:03.796" starttime="20181113 20:35:03.795"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:03.798" critical="yes" starttime="20181113 20:35:02.624"></status>
+</test>
+<kw type="teardown" name="Postcondition">
+<kw name="Delete All Sessions" library="RequestsLibrary">
+<doc>Removes all the session objects</doc>
+<msg timestamp="20181113 20:35:03.804" level="INFO">Delete All Sessions</msg>
+<status status="PASS" endtime="20181113 20:35:03.804" starttime="20181113 20:35:03.803"></status>
+</kw>
+<status status="PASS" endtime="20181113 20:35:03.804" starttime="20181113 20:35:03.803"></status>
+</kw>
+<status status="FAIL" endtime="20181113 20:35:03.804" starttime="20181113 20:34:56.118"></status>
+</suite>
+<statistics>
+<total>
+<stat fail="1" pass="2">Critical Tests</stat>
+<stat fail="1" pass="2">All Tests</stat>
+</total>
+<tag>
+</tag>
+<suite>
+<stat fail="1" id="s1" name="Poc Api Test" pass="2">Poc Api Test</stat>
+</suite>
+</statistics>
+<errors>
+</errors>
+</robot>
