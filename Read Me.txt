@@ -1,1 +1,38 @@
-Test
+Pre Requirements :
+1) Pycharm Community Edition   https://www.jetbrains.com/pycharm/download/#section=windows
+  1a) Plugin (Robot Framework Support)
+  2b) Plugin (Intellibot)
+2) Python 2.7
+3) Robot Framework 3.0.4
+  3a) BuiltIn Library
+  3b) Operating System Library
+  3c) Requests Library
+4) Selenium 
+
+
+Installation:
+1) Install Pycharm and its plugins
+2) Install Python 2.7
+3) Install Robot Framework and its library
+4) Install Selenium
+5) Setup Env Variables
+6) Copy XXX to XXXX(Python27>Lib>site-packages)
+
+
+
+Running the selenium robot framework: 
+1) On your Pycharm , open your project folder.
+2) Click view->terminal
+3) On your Pycharm Terminal, go to your project folder and type :
+robot --loglevel debug poc_api_test.robot
+4) Press enter keys
+
+Checking the test results: 
+1) After execution of "robot --loglevel debug poc_api_test.robot", go to your project folder and locate log.html
+2) Open it using your chrome browser.
+
+Video Demo :
+youtube 
+
+
+For details/inquires you can contact me at paolomondelo@yahoo.com or through my mobile phone +639178978954
