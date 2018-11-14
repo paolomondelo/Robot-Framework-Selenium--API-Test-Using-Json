@@ -18,7 +18,7 @@ Installation:
   - Operating System Library(Built in within Robot Framework)
   -Request Library (https://github.com/bulkan/robotframework-requests)
 4) Install Selenium
-5) Setup Env Variables for Pythom
+5) Setup Env Variables for Python
 6) Copy XXX to XXXX(Python27>Lib>site-packages)
 
 
