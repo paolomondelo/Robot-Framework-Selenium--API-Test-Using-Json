@@ -29,7 +29,6 @@ Installation:
 4) Install Selenium
 5) Setup Env Variables for Python(*put this in your env variable (Path=C:\Tools\Python27;C:\Tools\Python27\Scripts) )
   *When installing Python 2.7, create a tools folder. We created tools folder so that we can put the installed Python 2.7 inside it.
-6) Copy XXX to XXXX(Python27>Lib>site-packages)
 
 
 
