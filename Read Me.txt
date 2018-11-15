@@ -4,7 +4,7 @@ Pre Requirements :
   2b) Plugin (Intellibot)
 2) Python 2.7 Windows x86 MSI Installer (2.7.0) (sig) -> https://www.python.org/download/releases/2.7/
   2a)(https://github.com/robotframework/robotframework/blob/master/INSTALL.rst)
-  2b) PIP (https://pip.pypa.io/en/stable/)
+  2b) PIP https://pypi.org/project/pip/#files)
 3) Robot Framework 3.0.4 (https://pypi.org/project/robotframework/)
   3a) BuiltIn Library
   3b) Operating System Library
@@ -14,13 +14,18 @@ Pre Requirements :
 
 Installation:
 1) Install Pycharm and its plugins (https://www.jetbrains.com/pycharm/download/#section=windows)
+
 2) Install Python 2.7 (Add Path of Python to system env) (https://github.com/robotframework/robotframework/blob/master/INSTALL.rst)
+  2a) PIP source -> https://pypi.org/project/pip/#files
+  2b) PyPy 2.7 compatible (http://pypy.org/download.html)
+  
 3) Install Robot Framework and its library(https://pypi.org/project/robotframework/)
   -BuiltIn Library (Built in within Robot Framework)
   - Operating System Library(Built in within Robot Framework)
   -Request Library (https://github.com/bulkan/robotframework-requests)
 4) Install Selenium
-5) Setup Env Variables for Python
+5) Setup Env Variables for Python(*put this in your env variable (Path=C:\Tools\Python27;C:\Tools\Python27\Scripts) )
+  *When installing Python 2.7, create a tools folder. We created tools folder so that we can put the installed Python 2.7 inside it.
 6) Copy XXX to XXXX(Python27>Lib>site-packages)
 
 
