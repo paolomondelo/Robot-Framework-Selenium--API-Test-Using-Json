@@ -2,7 +2,9 @@ Pre Requirements :
 1) Pycharm Community Edition   https://www.jetbrains.com/pycharm/download/#section=windows
   1a) Plugin (Robot Framework Support)
   2b) Plugin (Intellibot)
-2) Python 2.7(https://github.com/robotframework/robotframework/blob/master/INSTALL.rst)
+2) Python 2.7 Windows x86 MSI Installer (2.7.0) (sig) -> https://www.python.org/download/releases/2.7/
+  2a)(https://github.com/robotframework/robotframework/blob/master/INSTALL.rst)
+  2b) PIP (https://pip.pypa.io/en/stable/)
 3) Robot Framework 3.0.4 (https://pypi.org/project/robotframework/)
   3a) BuiltIn Library
   3b) Operating System Library
