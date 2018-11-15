@@ -20,9 +20,12 @@ Installation:
   2b) PyPy 2.7 compatible (http://pypy.org/download.html)
   
 3) Install Robot Framework and its library(https://pypi.org/project/robotframework/)
+  - https://github.com/robotframework/robotframework    download contents and paste in your python foleder. On your terminal go to folder path and type "python setup.py install" to install robot framework.
+  
   -BuiltIn Library (Built in within Robot Framework)
   - Operating System Library(Built in within Robot Framework)
-  -Request Library (https://github.com/bulkan/robotframework-requests)
+  -Request Library (https://github.com/bulkan/robotframework-requests) *repeat step #3
+        
 4) Install Selenium
 5) Setup Env Variables for Python(*put this in your env variable (Path=C:\Tools\Python27;C:\Tools\Python27\Scripts) )
   *When installing Python 2.7, create a tools folder. We created tools folder so that we can put the installed Python 2.7 inside it.
